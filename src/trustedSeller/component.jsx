@@ -4,13 +4,13 @@
 import { create } from 'zoid/src';
 import { node, dom } from 'jsx-pragmatic/src';
 
-export let LoginZoidComponent = create({
+export let TSComponent = create({
 
     tag: 'login-component',
 
     dimensions: {
         width:  '300px',
-        height: '150px'
+        height: '300px'
     },
 
     url: ({ props }) => {
@@ -27,11 +27,23 @@ export let LoginZoidComponent = create({
             default: () => 'production'
         },
 
-        prefilledEmail: {
+        tokenId: {
             type: 'string'
         },
 
-        onLogin: {
+        authToken: {
+            type: 'string'
+        },
+
+        refSite: {
+            type: 'string'
+        },
+
+        displayToolTip: {
+            type: 'boolean'
+        },
+
+        onIconClick: {
             type: 'function'
         }
     },
@@ -45,25 +57,30 @@ export let LoginZoidComponent = create({
                     <style>
                         {`
                         html, body {
-                            width: 100%;
-                            height: 100%;
+                            width:300px;
+                            height:300px;
                             overflow: hidden;
-                            top: 0;
-                            left: 0;
-                            margin: 0;
+                            bottom: 0;
+                            position: fixed !important;
+                            left: 0 !important;
+                            margin: 0 !important;
                             text-align: center;
+                        }
+                        .zoid-visible {
+                            bottom: 0 !important;
+                            position: fixed !important;
+                            left: 0 !important;
                         }
 
                         .spinner {
-                            position: absolute;
-                            max-height: 60vmin;
-                            max-width: 60vmin;
                             height: 40px;
                             width: 40px;
-                            top: 50%;
-                            left: 50%;
+                            bottom:10px;
+                            left:30px;
+                            position: fixed;
                             transform: translateX(-50%) translateY(-50%);
                             z-index: 10;
+                            
                         }
 
                         .spinner .loader {
@@ -89,9 +106,9 @@ export let LoginZoidComponent = create({
                     </style>
                 </head>
                 <body>
-                    <div class="spinner">
+                    {/* <div class="spinner">
                         <div id="loader" class="loader"></div>
-                    </div>
+                    </div> */}
                 </body>
             </html>
         ).render(dom({ doc }));

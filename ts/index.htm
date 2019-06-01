@@ -1,0 +1,86 @@
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./index.css" />
+    <style>
+        
+    </style>
+    <script src="../../dist/ts-zoid-component.frame.js"></script>
+</head>
+
+<body>
+
+    <h3>Sample shopping site</h3>
+    <div class="container">
+        <div class="topnav">
+            <a class="active" href="#home"><i class="fa fa-fw fa-home"></i>FashionVista</a>
+            <a href="#news">Women</a>
+            <a href="#contact">Men</a>
+            <a href="#about">Kids</a>
+            <a href="#contact">Shoes</a>
+            <div><input type="text" placeholder="Search.."><button type="submit"><i class="fa fa-search"></i></button></div>
+            
+            <a  href="#login"><i class="fa fa-fw fa-user"></i> Login</a>
+            <a  href="#checkout"><i class="fa fa-fw fa-shopping-cart"></i></a>
+            
+        </div>
+        <a href='#'><img src='./demo1.png'></img></a>
+        <a href='#'><img src='./demo2.png'></img></a>
+        
+        <a href='#'><img src='./demo1.png'></img></a>
+        <a href='#'><img src='./demo2.png'></img></a>
+        
+        <!-- Container for our zoid component to render into -->
+    
+        <div id="container" class="fixed"></div>
+    
+        <!-- Container to display the result of the login call -->
+    
+        <div id="result"></div>
+    </div>
+    
+
+    <script>
+        // trustedSeller.trustedSellerZoidComponent({
+
+        //     env: 'demo',
+
+        //     tokenId: 'valid',
+
+        //     // When the iframe window calls `window.xprops.onLogin(email)` this callback will be called
+
+        //     onIconClick: function(isTrsuted) {
+
+        //         // Display the email address that was used to log in
+
+        //         document.querySelector('#result').innerText = 'Is trusted Seller' + isTrsuted;
+        //     },
+            
+
+        //     }).render('#container');
+
+        // Render the component and pass down props to the iframe
+
+        trustedseller.TSComponent({
+
+            env: 'demo',
+
+            tokenId: 'valid',
+            authToken: '1234',
+            refSite: 'http://localhost:1337/ts/index.htm',
+            displayToolTip: true,
+            // When the iframe window calls `window.xprops.onLogin(email)` this callback will be called
+
+            onIconClick: function(isTrsuted) {
+
+                // Display the email address that was used to log in
+
+                // document.querySelector('#result').innerText = 'Is trusted Seller' + isTrsuted;
+           },
+
+        }).render('#container');
+
+    </script>
+
+</body>

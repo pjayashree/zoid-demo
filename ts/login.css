@@ -1,0 +1,179 @@
+html, body {
+    overflow: hidden;
+}
+
+body {
+    text-align: center;
+    /* border: 1px solid #ccc; */
+    width:300px;
+    height:300px;
+    bottom: 0 !important;
+    position: fixed !important;
+    left: 0 !important;
+}
+.zoid-visible {
+    bottom: 0px !important;
+    position: fixed !important;
+    left: 0px !important;
+}
+
+.zoid-outlet {
+    bottom: 0px !important;
+    position: fixed !important;
+    left: 0px !important;
+}
+
+.zoid-outlet > iframe {
+    bottom: 0 !important;
+    position: fixed !important;
+    left: 0 !important;
+    width:300px;
+    height:300px;
+}
+
+.spinner {
+    animation: rotator 1.4s linear infinite;
+    display: inline-block;
+    bottom:10px;
+    left:10px;
+    position: fixed;
+    width:30px;
+    height:30px;
+}
+.spinner .loader {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    border: 3px solid rgba(0, 0, 0, .2);
+    border-top-color: rgba(33, 128, 192, 0.8);
+    border-radius: 100%;
+    animation: rotation .7s infinite linear;
+
+}
+
+@keyframes rotator {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(270deg); }
+}
+
+.imgClass{
+    width:70px;
+    height:60px;
+    left:0px;
+    bottom:0px;   
+ }
+
+ #trustedSeller:hover {
+    border: 1px solid #0079ad;
+    
+ }
+
+ .noToolTip {
+     display: none !important;
+ }
+
+ .ptrusted {
+    left:40px;
+    bottom:30px;
+    background-color:#0079ad;
+    color:white;
+    font-size: 14px;
+ }
+
+.path {
+    stroke-dasharray: 187;
+    stroke-dashoffset: 0;
+    transform-origin: center;
+    animation:
+            dash 1.4s ease-in-out infinite,
+            colors 5.6s ease-in-out infinite;
+}
+
+/* @keyframes colors {
+    0% { stroke: #4285F4; }
+    25% { stroke: #DE3E35; }
+    50% { stroke: #F7C223; }
+    75% { stroke: #1B9A59; }
+    100% { stroke: #4285F4; }
+}
+
+@keyframes dash {
+    0% { stroke-dashoffset:187; }
+    50% {
+        stroke-dashoffset: 47;
+        transform:rotate(135deg);
+    }
+    100% {
+        stroke-dashoffset: 187;
+        transform:rotate(450deg);
+    }
+} */ 
+
+#trustedSeller .tooltiptext {
+    font-family: Helvetica Neue,Arial,sans-serif;
+    font-weight: 400;
+    display: none;
+    /* width: 180px; */
+    background-color: whitesmoke;
+    color: #0079ad;
+    text-align: left;
+    border-radius:6px;
+    /* padding: 5px 0; */
+    position: fixed;
+    z-index: 1;
+    /* bottom: 70px; */
+    bottom: 93px;
+    left: 30px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+.fixed {
+    position:fixed;
+    bottom:0px;
+    left:0px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+
+}
+.wrapper {
+    padding: 6px 6px 9px 6px;
+}
+.wrapper div {
+    margin-top: 4px;
+}
+
+.tooltiptext::after {
+    content: "";
+    position: absolute;
+    bottom: 70px;
+    top: 100%;
+    left: 20px;
+    margin-left: -5px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: whitesmoke transparent transparent transparent;
+}
+.tooltiptext ul{
+    list-style: none;
+    text-align: left;
+    padding-inline-start: 5px;
+    
+}
+#trustedSeller{
+    text-decoration: none;
+}
+#trustedSeller:hover .tooltiptext {
+    display: block;
+    cursor: pointer;
+}
+.favSmile{
+    color:#0079ad;;
+    margin-right: 10px;
+}
+
+.psts{
+    background-color:#0079ad; 
+    color: white;
+    font-weight: 600;
+    font-style: italic;
+    padding: 4px 8px;
+    border-radius: 6px 6px 0px 0px;
+}

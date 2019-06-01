@@ -2,9 +2,9 @@
 
 exports.__esModule = true;
 
-var _login = require("./login");
+var _trustedSeller = require("./trustedSeller");
 
-Object.keys(_login).forEach(function (key) {
+Object.keys(_trustedSeller).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
-  exports[key] = _login[key];
+  exports[key] = _trustedSeller[key];
 });

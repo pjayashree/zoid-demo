@@ -1,0 +1,88 @@
+
+<head>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="./login.css" />
+      
+        <script src="../../dist/login-zoid-component.frame.js"></script>
+      </head>
+      
+      <body>
+        <div class="fixed">
+            <a  id="trustedSeller" style="display:none" href= "#" target="_blank">
+              <img class="imgClass" src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg"> </img>
+              <div class="ptrusted">Trusted</div>
+                <span class="tooltiptext">
+               
+                    <div class="psts"> PayPal Trusted Seller</div>
+                    <div class="wrapper">
+                      <div><i class="favSmile fa fa-smile-o"></i>Happy customers</div>
+                      <div><i class="favSmile fa fa-rocket"></i>Fast shipping</div>
+                    </div>
+                 </span>
+                <!-- <div class="arrow" ></div> -->
+            </a>
+            <div class="spinner">
+                    <div id="loader" class="loader"></div>
+                </div>
+            
+            <!-- <svg id="spinner" class="spinner" width="60px" height="60px" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+              <circle class="path" fill="none" stroke-width="2" stroke-linecap="round" cx="15" cy="15" r="7"></circle>
+          </svg> -->
+        </div>
+      
+       
+      
+        
+      
+        
+      
+        <script>
+      
+            // Hide the loading spinner by default
+             
+            //
+            setTimeout(function() {
+                if(window.xprops.tokenId === 'valid'){
+                  document.querySelector('#trustedSeller').style.display = 'inline-block';
+                  if(!window.xprops.displayToolTip) {
+                    document.querySelector('.tooltiptext').classList.add('noToolTip');
+                  }
+                  document.querySelector('#trustedSeller').href = "https://www.paypal.com?authToken=" + window.xprops.authToken + '&href=' + window.xprops.refSite;
+                }
+                document.querySelector('.spinner').style.display = 'none';
+      
+                }, 1000);
+            
+      
+            // Handle the button click to log the user in
+      
+            document.querySelector('#trustedSeller').addEventListener('click', function(event) {
+                // event.preventDefault();
+      
+               
+                document.querySelector('.spinner').style.display = 'inline-block';
+                document.querySelector('#trustedSeller').style.display = 'none';
+                // // Pretend to make an ajax call to log the user in
+      
+                setTimeout(function() {
+                  console.log(window.xprops.tokenId)
+                    // Since we had a successful login, call-back the parent page to let them know which user logged in:
+                    if(window.xprops.tokenId !== 'valid') {                   
+                      document.querySelector('#trustedSeller').style.display = 'none';
+                      document.querySelector('.spinner').style.display = 'none';
+                      window.xprops.onIconClick(false);
+                    } else {
+                      
+                      document.querySelector('.spinner').style.display = 'none';
+                      document.querySelector('#trustedSeller').style.display = 'inline-block';
+                      window.xprops.onIconClick(true);
+                    }
+                   
+      
+                }, 2000);
+            });
+        </script>
+      
+      </body>
