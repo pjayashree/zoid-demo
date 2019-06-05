@@ -4,13 +4,42 @@
 /* eslint-disable func-names */
 /* @flow */
 
-const PAYPAL_VERIFIED_SELLER_LIST = {
+const CLOTHING = {
     'macy\'s':   'https://www.macys.com',
     'localhost': 'http://localhost:1337',
     'kohl\'s':     'https://www.kohls.com',
     'carter\'s':   'https://www.carters.com',
     'Walmart':     'https://www.walmart.com'
 };
+
+const SHOES = {
+    'Foot Locker':     'https://www.footlocker.com/',
+    'Zappos':          'https://www.zappos.com/',
+    'DSW':              'https://www.dsw.com/',
+    'Famous Footwear':     'https://www.famousfootwear.com'
+};
+
+const HOME = {
+    'macy\'s':   'https://www.macys.com',
+    'localhost': 'http://localhost:1337',
+    'kohl\'s':     'https://www.kohls.com',
+    'carter\'s':   'https://www.carters.com',
+    'Walmart':     'https://www.walmart.com'
+};
+
+const PAYPAL_VERIFIED_SELLER_LIST = {
+    ...CLOTHING,
+    ...SHOES,
+    ...HOME
+};
+
+const PAYPAL_SUPPORTED_CATEGORIES = {
+    'clothing': CLOTHING,
+    'shoes':    SHOES,
+    'home':     HOME
+};
+
+let isRetailerSelected = true;
 
 
 const checkIfURLVerified = (currentUrl) => {
@@ -35,7 +64,7 @@ const checkIfPayPalVerified = () => {
     }, 1000);
 };
 
-function autocomplete(inp, arr) {
+function autocomplete(inp) {
 
     let currentFocus;
 
@@ -51,20 +80,34 @@ function autocomplete(inp, arr) {
     inp.addEventListener('input', function(_e) {
         let b;
         let i;
-        const val = this.value;
+        let val = this.value;
+        let arr = [];
         closeAllLists();
-        if (!val) {
-            return false;
-        }
+        // if (!val) {
+        //     return false;
+        // }
         currentFocus = -1;
         const a = document.createElement('DIV');
         a.setAttribute('id', `${ this.id }autocomplete-list`);
         a.setAttribute('class', 'autocomplete-items');
         this.parentNode.appendChild(a);
+        if (!isRetailerSelected) {
+            if (!val) {
+                return false;
+            }
+            const selectedCat = Object.keys(PAYPAL_SUPPORTED_CATEGORIES).find(cat => cat.indexOf(val) === 0);
+            if (!selectedCat) {
+                return;
+            }
+            arr =  Object.keys(PAYPAL_SUPPORTED_CATEGORIES[selectedCat]) || [];
+            val = '';
+        } else {
+            arr = Object.keys(PAYPAL_VERIFIED_SELLER_LIST);
+        }
         for (i = 0; i < arr.length; i++) {
-            if (arr[i].substr(0, val.length).toUpperCase() === val.toUpperCase()) {
+            if (arr[i].substr(0, val.length).toUpperCase() === val.toUpperCase() || !val) {
                 b = document.createElement('DIV');
-                b.innerHTML = `<img class='autoImg' src=${ arr[i] }.png/>`;
+                b.innerHTML = `<img class='autoImg' src=${ arr[i].replace(/[\s\']/g, '') }.png/>`;
                 b.innerHTML += `<span class='autoText'><strong>${ arr[i].substr(0, val.length) }</strong>${ arr[i].substr(val.length) }</span>`;
                 b.innerHTML += `<input type='hidden' value='${ arr[i] }'>`;
                 
@@ -84,9 +127,24 @@ function autocomplete(inp, arr) {
     });
 }
 
+function selectCategory(event) {
+    document.getElementById('searchinput').value = '';
+    if (this.value === 'Category') {
+        isRetailerSelected = false;
+    } else  {
+        isRetailerSelected = true;
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     checkIfPayPalVerified();
-    autocomplete(document.getElementById('searchinput'), Object.keys(PAYPAL_VERIFIED_SELLER_LIST));
+    const radios = document.querySelectorAll('input[type=radio][name="cat"]');
+
+    // eslint-disable-next-line prefer-arrow-callback
+    Array.prototype.forEach.call(radios, function(radio) {
+        radio.addEventListener('change', selectCategory);
+    });
+    autocomplete(document.getElementById('searchinput'), Object.keys({ ...PAYPAL_VERIFIED_SELLER_LIST, ...PAYPAL_SUPPORTED_CATEGORIES }));
     
 });
 

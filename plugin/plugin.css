@@ -67,11 +67,12 @@ body {
 }
 .searchinput {
   border: none;
-  width: 180px;
+  width: 156px;
+  padding: 4px;
 
 }
 .favSearch {
-  padding: 0px;
+  padding: 4px;
 }
 
 input:focus{
@@ -121,6 +122,10 @@ input:focus{
 .verwrapper{
   height: 30px;
   background-color:#0079ad; 
+  padding: 2px;
+}
+
+.radioBtn {
   padding: 2px;
 }
 
