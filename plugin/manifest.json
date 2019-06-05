@@ -1,0 +1,34 @@
+
+  {
+    "name": "My first extension",
+  
+    "version": "1.0",
+  
+    "description": "My first extension",
+    
+    "manifest_version": 2,
+    "incognito": "split",
+    
+    "permissions":[
+      "background",
+      "tabs"
+  ],
+  
+  "icons": {
+      "128": "pp.png"
+      },
+    "browser_action": {
+      "default_icon": {
+      "16": "pp.png",
+      "32": "pp.png"
+    },
+    "default_popup": "plugin.html",
+    "default_title": "Check to see if our code is on this page"
+    },
+    "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["content.js"],
+    "run_at": "document_end"
+    } ]
+}
+

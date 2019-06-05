@@ -18,7 +18,7 @@ let TSComponent = (0, _src.create)({
     props
   }) => {
     return {
-      demo: './login.htm',
+      demo: './ts.htm',
       production: 'https://my-site.com/login',
       test: 'mock://www.my-site.com/base/test/windows/login/index.htm'
     }[props.env];

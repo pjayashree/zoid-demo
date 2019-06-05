@@ -4018,7 +4018,7 @@
             },
             url: function(_ref) {
                 return {
-                    demo: "./login.htm",
+                    demo: "./ts.htm",
                     production: "https://my-site.com/login",
                     test: "mock://www.my-site.com/base/test/windows/login/index.htm"
                 }[_ref.props.env];

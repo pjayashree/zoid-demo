@@ -20,7 +20,8 @@
     "release:major": "./publish.sh major",
     "clean": "rimraf dist coverage",
     "reinstall": "rimraf flow-typed && rimraf node_modules && npm install && flow-typed install",
-    "debug": "cross-env NODE_ENV=debug"
+    "debug": "cross-env NODE_ENV=debug",
+    "chrome-build": "IINLINE_RUNTIME_CHUNK=false build"
   },
   "files": [
     "dist/",
